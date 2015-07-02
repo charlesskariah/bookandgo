@@ -1,0 +1,97 @@
+<div class = "container">
+<a href= "<%= root_path%>" class="btn btn-info" style="float:right" role="button">Back</a>
+</div>
+<div class = "clearfix"></div>
+<%= form_for @book_room do |f| %>
+	<div class= "container">
+		<% if flash[:danger].present? %>
+	    	<div class="alert alert-danger fade in">
+    			<a href="#" class="close" data-dismiss="alert">&times;</a>
+    			<strong>Error!</strong> <%=flash[:danger]%>.
+			</div>
+	  	<% end %>
+	  	<%if flash[:success].present?%>
+		  	<div class="alert alert-success fade in">
+	    		<a href="#" class="close" data-dismiss="alert">&times;</a>
+	    		<strong>Success! </strong><%=flash[:success]%>.
+			</div>
+		<%end%>
+		<% if flash[:error] %>
+	    	<div class="alert alert-danger fade in">    			
+    			<a href="#" class="close" data-dismiss="alert">&times;</a>
+    			<strong>Sorry!</strong> <%=flash[:error]%>.    			
+			</div>
+	  	<% end %>
+		<div class = "field form-group">
+			<div class = "row">
+				<label for="roomname" class="col-sm-2 control-label">MeetingRoom</label>
+				<div class = "col-sm-4">
+				  	<%= f.select :meeting_room_id, options_for_select(@meeting_rooms_lists.collect { |room|
+						[room.name.titleize, room.id] }, 1), {}, { id: 'rooms_select' ,:class => "form-control"} %>
+				</div>
+				<div class = "col-sm-6"></div>
+			</div>
+		</div>
+		<div class = "field form-group">
+			<div class = "row">
+				<label for="fromtime" class="col-sm-2 control-label">From</label>
+				<div class = "col-sm-4">
+				  	<div class='input-group date datetimepicker1' id='startdate'>
+	                    <%= f.text_field :starts_at, :id => 'start_date_time', :class => "form-control", as: :datetime_picker%>
+	                    <span class="input-group-addon">
+	                    	<span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                </div>	
+				</div>
+				<div class = "col-sm-6"></div>
+			</div>
+		</div>
+		<div class = "field form-group">
+			<div class = "row">
+				<label for="totime" class="col-sm-2 control-label">To</label>
+				<div class = "col-sm-4">
+				  	<div class='input-group date datetimepicker1' id='enddate'>
+	                    <%= f.text_field :ends_at, :id => 'end_date_time', :class => "form-control", as: :datetime_picker%>
+	                    <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                </div>
+				</div>
+				<div class = "col-sm-6"></div>
+			</div>
+		</div>
+		<div class = "field form-group">
+			<div class = "row">
+				<label for="invitees" class="col-sm-2 control-label">MeetingRoom</label>
+				<div class = "col-sm-4">
+				  	<%= f.select :invitees, options_for_select(@employees_list.collect { |user|
+						[user.name.titleize, user.name.titleize] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
+				</div>
+				<div class = "col-sm-6"></div>
+			</div>
+		</div>
+		<div class = "field form-group">
+			<div class = "row">
+				<label for="agenda" class="col-sm-2 control-label">Purpose</label>
+				<div class = "col-sm-4">
+				  	<%= f.text_area :agenda, :class => "form-control", :rows => "5"%>
+				</div>
+				<div class = "col-sm-6"></div>
+			</div>
+		</div>
+		<div class = "form-group">
+			<div class = "row">
+				<div class="col-sm-2"></div>
+				<div class = "col-sm-2">
+					<%=f.submit 'Book The Room', :id => "book_room", :class => ["btn", "btn-info"] , data: {disable_with: "Checking Availabilty.."}%>
+		
+				</div>
+				<div class = "col-sm-8"></div>
+			</div>
+		</div>
+	</div>	
+<%end%>
+
+
+
+
