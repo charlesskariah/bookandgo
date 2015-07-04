@@ -13,7 +13,6 @@ before_action :authenticate_user!
 	end
 
 	def create
-
 		@book_room = Booking.create(params.require(:booking).permit(:meeting_room_id,:starts_at,:ends_at, :agenda, :invitees)
 			.merge( user_id: current_user.id,status: false))
 		invitees_list = params[:booking][:invitees].reject {|c| c.empty?}
