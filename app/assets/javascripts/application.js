@@ -16,6 +16,6 @@
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require moment
-//= require bootstrap-datetimepicker
+//= require jquery.datetimepicker
 //= require bootstrap-multiselect
 //= require_tree .
