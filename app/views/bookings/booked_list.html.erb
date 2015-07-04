@@ -1,0 +1,26 @@
+<div class = "container">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Meeting Room</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Booked By</th>
+				<th>Purpose</th>
+				<th>Invitees</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@booked_room_list.each do |room|%>
+			   <tr>
+			   		<td><%=room.meeting_room.name%></td>
+			   		<td><%=room.starts_at%></td>
+			   		<td><%=room.ends_at%></td>
+			   		<td><%=room.user.name%></td>
+			   		<td><%=room.agenda%></td>
+			   		<td><%=(room.invitees).join(",")%></td>
+			   	</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>

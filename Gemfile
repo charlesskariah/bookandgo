@@ -9,6 +9,12 @@ gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'sass-rails', '~> 5.0'
+
+gem 'momentjs-rails', '>= 2.9.0'
+
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+
+gem 'bootstrap-multiselect-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -18,6 +24,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+#in order to avoid refresh the page again for jquery datetimepicker
+gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #new gems added
 gem 'devise'
+gem 'pry-rails'
 
 
 # Use ActiveModel has_secure_password
