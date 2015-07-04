@@ -36,12 +36,7 @@
 			<div class = "row">
 				<label for="fromtime" class="col-sm-2 control-label">From</label>
 				<div class = "col-sm-4">
-				  	<div class='input-group date datetimepicker1' id='startdate'>
-	                    <%= f.text_field :starts_at, :id => 'start_date_time', :class => "form-control", as: :datetime_picker%>
-	                    <span class="input-group-addon">
-	                    	<span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-	                </div>	
+	                    <%= f.text_field :starts_at, :id => 'datetimepicker_start', :class => "form-control"%>
 				</div>
 				<div class = "col-sm-6"></div>
 			</div>
@@ -50,12 +45,7 @@
 			<div class = "row">
 				<label for="totime" class="col-sm-2 control-label">To</label>
 				<div class = "col-sm-4">
-				  	<div class='input-group date datetimepicker1' id='enddate'>
-	                    <%= f.text_field :ends_at, :id => 'end_date_time', :class => "form-control", as: :datetime_picker%>
-	                    <span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-	                </div>
+	                    <%= f.text_field :ends_at, :id => 'datetimepicker_end', :class => "form-control"%>
 				</div>
 				<div class = "col-sm-6"></div>
 			</div>
@@ -91,7 +81,5 @@
 		</div>
 	</div>	
 <%end%>
-
-
 
 
