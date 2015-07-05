@@ -55,7 +55,7 @@
 				<label for="invitees" class="col-sm-2 control-label">MeetingRoom</label>
 				<div class = "col-sm-4">
 				  	<%= f.select :invitees, options_for_select(@employees_list.collect { |user|
-						[user.name.titleize, user.name.titleize] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
+						[user.name.titleize, user.id] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
 				</div>
 				<div class = "col-sm-6"></div>
 			</div>

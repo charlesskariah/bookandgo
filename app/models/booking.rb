@@ -16,4 +16,9 @@ class Booking < ActiveRecord::Base
 		MeetingRoom.where(id: self.meeting_room_id)
 	end
 
+	def invitee_names
+		invitee_ids = self.invitees
+		User.where(id: invitee_ids).select("name").map(&:name).join(',')
+	end
+
 end
