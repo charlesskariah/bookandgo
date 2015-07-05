@@ -14,11 +14,11 @@
 			<%@booked_room_list.each do |room|%>
 			   <tr>
 			   		<td><%=room.meeting_room.name%></td>
-			   		<td><%=room.starts_at%></td>
-			   		<td><%=room.ends_at%></td>
+			   		<td><%=room.starts_at.strftime("%d/%m/%Y at %H:%M")%></td>
+			   		<td><%=room.ends_at.strftime("%d/%m/%Y at %H:%M")%></td>
 			   		<td><%=room.user.name%></td>
 			   		<td><%=room.agenda%></td>
-			   		<td><%=(room.invitees).join(",")%></td>
+			   		<td><%=room.invitee_names%></td>
 			   	</tr>
 			<%end%>
 		</tbody>
