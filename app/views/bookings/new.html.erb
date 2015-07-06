@@ -1,30 +1,35 @@
-<div class = "container">
-<a href= "<%= root_path%>" class="btn btn-info" style="float:right" role="button">Back</a>
+<div class = "col-md-12 col-sm-12 col-lg-12" >
+  <div class = "col-md-4 col-sm-4 col-lg-4">
+    <h2>New Booking</h2>
+  </div>
 </div>
-<div class = "clearfix"></div>
-<%= form_for @book_room do |f| %>
-	<div class= "container">
-		<% if flash[:danger].present? %>
-	    	<div class="alert alert-danger fade in">
-    			<a href="#" class="close" data-dismiss="alert">&times;</a>
-    			<strong>Error!</strong> <%=flash[:danger]%>.
+<div class = " col-md-12 col-sm-12 col-lg-12">
+  <div class = "col-md-6 col-sm-6 col-lg-6">
+	  <% if flash[:danger].present? %>
+		  <div class="alert alert-danger fade in">
+	    	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	    	<strong>Error!</strong> <%=flash[:danger]%>.
 			</div>
-	  	<% end %>
-	  	<%if flash[:success].present?%>
-		  	<div class="alert alert-success fade in">
-	    		<a href="#" class="close" data-dismiss="alert">&times;</a>
-	    		<strong>Success! </strong><%=flash[:success]%>.
+		<% end %>
+		<%if flash[:success].present?%>
+			<div class="alert alert-success fade in">
+		    <a href="#" class="close" data-dismiss="alert">&times;</a>
+		    <strong>Success! </strong><%=flash[:success]%>.
 			</div>
 		<%end%>
 		<% if flash[:error] %>
-	    	<div class="alert alert-danger fade in">    			
-    			<a href="#" class="close" data-dismiss="alert">&times;</a>
-    			<strong>Sorry!</strong> <%=flash[:error]%>.    			
+		  <div class="alert alert-danger fade in">    			
+	    	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	    	<strong>Sorry!</strong> <%=flash[:error]%>.    			
 			</div>
-	  	<% end %>
+		<% end %>
+	</div>
+</div>
+<%= form_for @book_room do |f| %>
+	<div class= "container">
 		<div class = "field form-group">
 			<div class = "row">
-				<label for="roomname" class="col-sm-2 control-label">MeetingRoom</label>
+				<label for="roomname" class="col-sm-2 control-label">MeetingRoom :</label>
 				<div class = "col-sm-4">
 				  	<%= f.select :meeting_room_id, options_for_select(@meeting_rooms_lists.collect { |room|
 						[room.name.titleize, room.id] }, 1), {}, { id: 'rooms_select' ,:class => "form-control"} %>
@@ -34,7 +39,7 @@
 		</div>
 		<div class = "field form-group">
 			<div class = "row">
-				<label for="fromtime" class="col-sm-2 control-label">From</label>
+				<label for="fromtime" class="col-sm-2 control-label">From: </label>
 				<div class = "col-sm-4">
 	                    <%= f.text_field :starts_at, :id => 'datetimepicker_start', :class => "form-control"%>
 				</div>
@@ -43,7 +48,7 @@
 		</div>
 		<div class = "field form-group">
 			<div class = "row">
-				<label for="totime" class="col-sm-2 control-label">To</label>
+				<label for="totime" class="col-sm-2 control-label">To :</label>
 				<div class = "col-sm-4">
 	                    <%= f.text_field :ends_at, :id => 'datetimepicker_end', :class => "form-control"%>
 				</div>
@@ -52,7 +57,7 @@
 		</div>
 		<div class = "field form-group">
 			<div class = "row">
-				<label for="invitees" class="col-sm-2 control-label">MeetingRoom</label>
+				<label for="invitees" class="col-sm-2 control-label">Attendees :</label>
 				<div class = "col-sm-4">
 				  	<%= f.select :invitees, options_for_select(@employees_list.collect { |user|
 						[user.name.titleize, user.id] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
@@ -62,7 +67,7 @@
 		</div>
 		<div class = "field form-group">
 			<div class = "row">
-				<label for="agenda" class="col-sm-2 control-label">Purpose</label>
+				<label for="agenda" class="col-sm-2 control-label">Subject :</label>
 				<div class = "col-sm-4">
 				  	<%= f.text_area :agenda, :class => "form-control", :rows => "5"%>
 				</div>
