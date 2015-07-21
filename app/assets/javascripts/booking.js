@@ -1,5 +1,3 @@
-
-
 $(function () {
 	$('#users_select').multiselect();
 	$('#datetimepicker_start').datetimepicker({
@@ -12,5 +10,6 @@ $(function () {
 	}); 
 });
 
-
-  
+setTimeout(function() {
+  $('.fade_alerts').hide('slow');
+}, 3000);

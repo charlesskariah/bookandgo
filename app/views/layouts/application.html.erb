@@ -77,9 +77,13 @@
 
     <!-- Page Content -->
     <div class="container">
-    <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
-         <%= yield %>
+    <% if notice %>
+      <div class="alert alert-success fade_alerts" role="alert"><%= notice %></div>
+    <%end%>
+    <%if alert %>
+      <div class="alert alert-danger fade_alerts" role="alert"><%= alert %></div>
+    <% end %>
+        <%= yield %>
     </div>
     <!-- /.container -->
 
