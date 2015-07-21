@@ -5,24 +5,24 @@
 </div>
 <div class = " col-md-12 col-sm-12 col-lg-12">
   <div class = "col-md-6 col-sm-6 col-lg-6">
-	  <% if flash[:danger].present? %>
-		  <div class="alert alert-danger fade in">
-	    	<a href="#" class="close" data-dismiss="alert">&times;</a>
-	    	<strong>Error!</strong> <%=flash[:danger]%>.
-			</div>
-		<% end %>
+	   <% if @book_room.errors.any? %>
+    <div class = "danger">
+      <h2>
+        <%= pluralize(@book_room.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @book_room.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 		<%if flash[:success].present?%>
 			<div class="alert alert-success fade in">
 		    <a href="#" class="close" data-dismiss="alert">&times;</a>
 		    <strong>Success! </strong><%=flash[:success]%>.
 			</div>
 		<%end%>
-		<% if flash[:error] %>
-		  <div class="alert alert-danger fade in">    			
-	    	<a href="#" class="close" data-dismiss="alert">&times;</a>
-	    	<strong>Sorry!</strong> <%=flash[:error]%>.    			
-			</div>
-		<% end %>
 	</div>
 </div>
 <%= form_for @book_room do |f| %>
@@ -41,7 +41,7 @@
 			<div class = "row">
 				<label for="fromtime" class="col-sm-2 control-label">From: </label>
 				<div class = "col-sm-4">
-	                    <%= f.text_field :starts_at, :id => 'datetimepicker_start', :class => "form-control"%>
+	        <%= f.text_field :starts_at, :required => true, :id => 'datetimepicker_start', :class => "form-control"%>
 				</div>
 				<div class = "col-sm-6"></div>
 			</div>
@@ -50,7 +50,7 @@
 			<div class = "row">
 				<label for="totime" class="col-sm-2 control-label">To :</label>
 				<div class = "col-sm-4">
-	                    <%= f.text_field :ends_at, :id => 'datetimepicker_end', :class => "form-control"%>
+	        <%= f.text_field :ends_at, :required => true, :id => 'datetimepicker_end', :class => "form-control"%>
 				</div>
 				<div class = "col-sm-6"></div>
 			</div>
@@ -69,7 +69,7 @@
 			<div class = "row">
 				<label for="agenda" class="col-sm-2 control-label">Subject :</label>
 				<div class = "col-sm-4">
-				  	<%= f.text_area :agenda, :class => "form-control", :rows => "5"%>
+				  	<%= f.text_area :agenda, :required => true, :class => "form-control", :rows => "5"%>
 				</div>
 				<div class = "col-sm-6"></div>
 			</div>
