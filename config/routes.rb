@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   # Example resource route with options:
   #   resources :products do
