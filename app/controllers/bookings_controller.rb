@@ -32,7 +32,7 @@ before_action :authenticate_user!
 	end
 
 	def todays
-		@booked_room_list = Booking.where("starts_at >= ? AND starts_at <= ?", Time.zone.now.beginning_of_day,Time.zone.now.end_of_day)
+		@booked_room_list = Booking.where("starts_at >= ? AND starts_at <= ?", Time.zone.now.beginning_of_day,Time.zone.now.end_of_day).order(:starts_at)
 	end
 
 	private
