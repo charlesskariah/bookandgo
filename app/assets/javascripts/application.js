@@ -18,4 +18,5 @@
 //= require moment
 //= require jquery.datetimepicker
 //= require bootstrap-multiselect
+//= require jquery.dataTables
 //= require_tree .

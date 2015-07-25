@@ -6,3 +6,10 @@
 {
 	float: right !important;
 }
+
+.panel-default > .panel-heading {
+    background-image: none!important;
+    background-color: rgb(117, 152, 169)!important;
+    color: white!important;
+
+}

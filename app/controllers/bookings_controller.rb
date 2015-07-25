@@ -24,7 +24,7 @@ before_action :authenticate_user!
 	end
 
 	def booked_list
-		@booked_room_list = Booking.where(status: false)
+		@booked_room_list = Booking.where(status: false).order("starts_at DESC").last(100)
 	end
 
 	def upcoming
