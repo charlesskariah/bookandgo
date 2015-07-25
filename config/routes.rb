@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     resources :bookings, :only => [:new, :create] do
       collection do
         get 'booked_list'
+        get 'upcoming'
+        get 'todays'
       end
     end
 
