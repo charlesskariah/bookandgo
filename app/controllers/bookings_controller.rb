@@ -27,6 +27,14 @@ before_action :authenticate_user!
 		@booked_room_list = Booking.where(status: false)
 	end
 
+	def upcoming
+		@booked_room_list = Booking.where("starts_at >= ?" ,DateTime.current).order(:starts_at)
+	end
+
+	def todays
+		@booked_room_list = Booking.where("starts_at >= ? AND starts_at <= ?", Time.zone.now.beginning_of_day,Time.zone.now.end_of_day)
+	end
+
 	private
 
 	def booking_params

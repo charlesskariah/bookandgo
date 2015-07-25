@@ -18,8 +18,7 @@
     </div>
     <% end %>
 		<%if flash[:success].present?%>
-			<div class="alert alert-success fade in">
-		    <a href="#" class="close" data-dismiss="alert">&times;</a>
+			<div class="alert alert-success fade in fade_alerts">
 		    <strong>Success! </strong><%=flash[:success]%>.
 			</div>
 		<%end%>
