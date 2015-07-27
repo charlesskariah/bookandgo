@@ -6,7 +6,7 @@ class Booking < ActiveRecord::Base
 	belongs_to :meeting_room
 
 	def check_for_room_availability
-		if Booking.exists?(starts_at: self.starts_at,meeting_room_id: self.meeting_room_id)
+		if Booking.exists?(["starts_at < ? AND ends_at > ? AND meeting_room_id = ? ",self.ends_at,self.starts_at,self.meeting_room_id])
 			errors.add(:base, "Selected Meeting room is not available for the given time intervel.Please choose a different location or time!!")
 		end
 	end
