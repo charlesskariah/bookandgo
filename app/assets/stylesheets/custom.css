@@ -28,3 +28,21 @@
 .row-padding{
   padding-top: 10px;
 }
+.bg-color{
+  background-color: #E9EAD1;
+}
+
+.sample{
+ color:  #f4ba51 ;
+text-decoration: none;
+}
+
+.header-text {
+    position: absolute;
+    top: 20%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #fff;
+}
+
