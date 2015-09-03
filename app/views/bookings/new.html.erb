@@ -1,5 +1,5 @@
 <div class=" page-header header-all-page ">
-  <h2>Book your Room <small>Click away to book</small></h2>
+  <h2>Book your Room <small>A Click away to book</small></h2>
 </div>
 <div class = " col-md-12 col-sm-12 col-lg-12">
 	   <% if @book_room.errors.any? %>
@@ -24,55 +24,55 @@
 <div class="container-fluid">
 <%= form_for @book_room do |f| %>
   <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-3 col-lg-3 col-xs-4" >
+    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-4" >
       <label for="fromtime" class="control-label">Select Meeting Room: </label>
     </div>
-    <div class = "col-md-4 col-sm-4 col-lg-4 col-xs-4" >
+    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
       <%= f.select :meeting_room_id, options_for_select(@meeting_rooms_lists.collect { |room| [room.name.titleize, room.id] }, 1), {}, { id: 'rooms_select' ,:class => "form-control"} %>
     </div>
   </div>
 
   <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-3 col-lg-3 col-xs-4" >
+    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
       <label for="fromtime" class="control-label">From: </label>
     </div>
-    <div class = "col-md-4 col-sm-4 col-lg-4 col-xs-4" >
+    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
       <%= f.text_field :starts_at, :required => true, :id => 'datetimepicker_start', :class => "form-control"%>
     </div>
   </div>
 
   <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-3 col-lg-3 col-xs-4" >
+    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
       <label for="fromtime" class="control-label">To: </label>
     </div>
-    <div class = "col-md-4 col-sm-4 col-lg-4 col-xs-4" >
+    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
        <%= f.text_field :ends_at, :required => true, :id => 'datetimepicker_end', :class => "form-control"%>
     </div>
   </div>
 
   <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-3 col-lg-3 col-xs-4" >
+    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
       <label for="fromtime" class="control-label">Attendees: </label>
     </div>
-    <div class = "col-md-4 col-sm-4 col-lg-4 col-xs-4" >
+    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
        <%= f.select :invitees, options_for_select(@employees_list.collect { |user|
 						[user.name.titleize, user.id] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
     </div>
   </div>
 
   <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-3 col-lg-3 col-xs-4" >
+    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
       <label for="fromtime" class="control-label">Subject: </label>
     </div>
-    <div class = "col-md-4 col-sm-4 col-lg-4 col-xs-4" >
+    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
        <%= f.text_area :agenda, :required => true, :class => "form-control", :rows => "3"%>
     </div>
   </div>
 
     <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-3 col-lg-3 col-xs-4" >
+    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
     </div>
-    <div class = "col-md-4 col-sm-4 col-lg-4 col-xs-4" >
+    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
        <%=f.submit 'Book The Room', :id => "book_room", :class => ["btn", "btn-info"] , data: {disable_with: "Checking Availabilty.."}%>
     </div>
   </div>
