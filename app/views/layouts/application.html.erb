@@ -13,16 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
 
-    <!-- Custom CSS -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-    <style>
-    body {
-        padding-top: 70px;
-        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    }
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +26,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -48,7 +39,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<%= root_path %>">Home</a></li>
             <% if user_signed_in? %>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -62,20 +52,55 @@
         </div>
       </div>
 </nav>
+  <div class = "container container-margin-top">
+    <div id="wrapper">
 
-    <!-- Page Content -->
-    <div class="container">
-    <% if notice %>
-      <div class="alert alert-success fade_alerts" role="alert"><%= notice %></div>
-    <%end%>
-    <%if alert %>
-      <div class="alert alert-danger fade_alerts" role="alert"><%= alert %></div>
-    <% end %>
-        <%= yield %>
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="<%=root_path%>">Home </a>
+                </li>
+                <li>
+                    <a href="<%= new_booking_path%>">New Booking </a>
+                </li>
+                <li>
+                   <a href="<%= todays_bookings_path%>">Today's Bookings</a>
+                </li>
+                <li>
+                    <a href="<%= upcoming_bookings_path%>">List Upcoming Bookings</a>
+                </li>
+                <li>
+                    <a href="<%= booked_list_bookings_path%>">See All Bookings</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <a href="#menu-toggle" class="btn btn-default collapse-margin" id="menu-toggle"><span class = "glyphicon glyphicon-arrow-left" id = "reverse-class"></span></a>
+                        <% if notice %>
+                           <div class="alert alert-success fade_alerts" role="alert"><%= notice %></div>
+                        <%end%>
+                        <%if alert %>
+                          <div class="alert alert-danger fade_alerts" role="alert"><%= alert %></div>
+                        <% end %>
+                <%= yield %>
+        <!-- /#page-content-wrapper -->
+
     </div>
-    <!-- /.container -->
+    </div>
+    <!-- /#wrapper -->
 
-    <!-- jQuery Version 1.11.1 -->
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#reverse-class").toggleClass("glyphicon glyphicon-arrow-left glyphicon glyphicon-arrow-right");
+    });
+    </script>
+
 </body>
 
 </html>

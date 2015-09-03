@@ -19,4 +19,5 @@
 //= require jquery.datetimepicker
 //= require bootstrap-multiselect
 //= require jquery.dataTables
-//= require_tree .
+//= require jquery.dataTables.bootstrap
+//= require booking

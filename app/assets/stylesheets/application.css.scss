@@ -11,8 +11,9 @@
  * file per style scope.
  *
  *= require jquery.datetimepicker
- *= require jquery.dataTables
  *= require custom
+ *= require simple-sidebar
+ *= require dataTables.bootstrap.min
  */
 
  @import "bootstrap-sprockets";

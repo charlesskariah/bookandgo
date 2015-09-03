@@ -13,3 +13,18 @@
     color: white!important;
 
 }
+ .container-margin-top{
+  margin-top: 50px;
+ }
+ .collapse-margin{
+  margin-top: 10px;
+  margin-left: -25px;
+ }
+.header-all-page{
+  margin-top: -55px!important;
+  margin-left: 25px!important;
+}
+
+.row-padding{
+  padding-top: 10px;
+}

@@ -1,11 +1,9 @@
+<div class=" page-header header-all-page ">
+  <h2>Today's Bookings <small></small></h2>
+</div>
 <div class = "container">
   <div class="row">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 >
-          TODAY'S MEETINGS 
-        </h3>
-      </div>
+  <div class ="col-md-9">
 		  <%if @booked_room_list.present? %>
 				<table class="table table-bordered table-hover display" id = "upcoming_table">
 					<thead>
@@ -32,8 +30,8 @@
 					</tbody>
 				</table>
 		  <%else%>
-		  <h3><span class="label label-info">No Bookings TOday..!!</span></h3>
+		  <h3><span class="label label-info">No Bookings Today..!!</span></h3>
 		  <%end%>
 		</div>
+		</div>
 	</div>
-</div>
