@@ -78,13 +78,13 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <a href="#menu-toggle" class="btn btn-default collapse-margin" id="menu-toggle"><span class = "glyphicon glyphicon-arrow-left" id = "reverse-class"></span></a>
                         <% if notice %>
-                           <div class="alert alert-success fade_alerts" role="alert"><%= notice %></div>
+                          <div class="alert alert-success fade_alerts" role="alert"><%= notice %></div>
                         <%end%>
                         <%if alert %>
                           <div class="alert alert-danger fade_alerts" role="alert"><%= alert %></div>
                         <% end %>
+        <a href="#menu-toggle" class="btn btn-default collapse-margin" id="menu-toggle"><span class = "glyphicon glyphicon-arrow-left" id = "reverse-class"></span></a>
                 <%= yield %>
         <!-- /#page-content-wrapper -->
 
