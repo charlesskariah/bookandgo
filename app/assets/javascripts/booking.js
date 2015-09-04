@@ -15,7 +15,7 @@ $(function () {
 
 setTimeout(function() {
   $('.fade_alerts').hide('slow');
-}, 3000);
+}, 5000);
 
 $(document).ready( function () {
     $('#upcoming_table').DataTable(
