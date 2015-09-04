@@ -1,5 +1,10 @@
 $(function () {
-	$('#users_select').multiselect();
+	$('#users_select').multiselect({
+        includeSelectAllOption: true,
+        enableFiltering:true,
+        nonSelectedText :'Select Attendees'
+    });
+
 	$('#datetimepicker_start').datetimepicker({
 		  format:'d-m-Y / H:i',
 		  minDate: '0'
