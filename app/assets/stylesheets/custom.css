@@ -48,6 +48,15 @@ text-decoration: none;
 }
 
 .login-logo{
- width: 185px;
- margin-left: 10px;
- margin-top: 12px;}
+  width: 185px;
+  margin-left: 10px;
+  margin-top: 12px;
+ }
+.bg-image{
+  background: url("sampler3.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
