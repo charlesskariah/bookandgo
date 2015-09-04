@@ -62,12 +62,13 @@
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
+    color: #999999;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #FFFFFF;
 }
 
 .sidebar-nav li a:hover {
@@ -122,4 +123,10 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+.active-li{
+    text-decoration: none;
+    color: #fff;
+    background: rgba(21, 141, 98, 1);
 }

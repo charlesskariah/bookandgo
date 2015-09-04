@@ -57,20 +57,20 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class ="sample">
+            <ul class="sidebar-nav" id ="myid">
+                <li class = "<%= active_action('bookings/index') %>" >
                     <a href="<%=root_path%>">Home </a>
                 </li>
-                <li>
-                    <a href="<%= new_booking_path%>">New Booking </a>
+                <li class = "<%= active_action('bookings/new') %>">
+                    <a href="<%= new_booking_path%>">New Booking</span> </a>
                 </li>
-                <li>
+                <li class = "<%= active_action('bookings/todays') %>">
                    <a href="<%= todays_bookings_path%>">Today's Bookings</a>
                 </li>
-                <li>
+                <li class = "<%= active_action('bookings/upcoming') %>">
                     <a href="<%= upcoming_bookings_path%>">List Upcoming Bookings</a>
                 </li>
-                <li>
+                <li class = "<%= active_action('bookings/booked_list') %>">
                     <a href="<%= booked_list_bookings_path%>">See All Bookings</a>
                 </li>
             </ul>
@@ -79,10 +79,15 @@
 
         <!-- Page Content -->
                         <% if notice %>
-                          <div class="alert alert-success fade_alerts" role="alert"><%= notice %></div>
+                          <div class="alert alert-success alert-dismissible fade_alerts" role="alert"><%= notice %>
+                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          </div>
+
                         <%end%>
                         <%if alert %>
-                          <div class="alert alert-danger fade_alerts" role="alert"><%= alert %></div>
+                          <div class="alert alert-danger alert-dismissible fade_alerts" role="alert"><%= alert %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
                         <% end %>
         <a href="#menu-toggle" class="btn btn-default collapse-margin" id="menu-toggle"><span class = "glyphicon glyphicon-arrow-left" id = "reverse-class"></span></a>
                 <%= yield %>
