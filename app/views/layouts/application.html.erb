@@ -57,20 +57,20 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class ="sample">
+            <ul class="sidebar-nav" id ="myid">
+                <li class = "<%= active_action('bookings/index') %>" >
                     <a href="<%=root_path%>">Home </a>
                 </li>
-                <li>
-                    <a href="<%= new_booking_path%>">New Booking </a>
+                <li class = "<%= active_action('bookings/new') %>">
+                    <a href="<%= new_booking_path%>">New Booking</span> </a>
                 </li>
-                <li>
+                <li class = "<%= active_action('bookings/todays') %>">
                    <a href="<%= todays_bookings_path%>">Today's Bookings</a>
                 </li>
-                <li>
+                <li class = "<%= active_action('bookings/upcoming') %>">
                     <a href="<%= upcoming_bookings_path%>">List Upcoming Bookings</a>
                 </li>
-                <li>
+                <li class = "<%= active_action('bookings/booked_list') %>">
                     <a href="<%= booked_list_bookings_path%>">See All Bookings</a>
                 </li>
             </ul>
