@@ -1,6 +1,6 @@
 class Booking < ActiveRecord::Base
-	
-	validates :starts_at, :ends_at, :agenda, :invitees, presence: true
+
+	validates :starts_at, :ends_at, :agenda, presence: true
 	validate :check_for_room_availability, :on => :create
 	belongs_to :user
 	belongs_to :meeting_room

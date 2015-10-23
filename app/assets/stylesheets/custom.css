@@ -53,10 +53,33 @@ text-decoration: none;
   margin-top: 12px;
  }
 .bg-image{
-  background: url("sampler3.jpg") no-repeat center center fixed;
+  background: url("images2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
 }
 
+.mrg-top{
+  margin-top: 20px;
+}
+
+.mrg-btm{
+  margin-bottom: 40px;
+}
+
+.book{
+  background-color: rgb(206, 227, 225);
+  border-radius: 4px 4px 4px 4px;
+ -moz-border-radius: 4px 4px 4px 4px;
+ -webkit-border-radius: 4px 4px 4px 4px;
+ border: 1px solid #BDBDBD;
+
+}
+
+.border-width{
+  height: 550x;
+  border: 4px dashed #BDBDBD;
+  margin-top: 20px;
+  padding: 165px;
+  background-color: #CCCCCC;
+}
