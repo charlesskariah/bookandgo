@@ -1,81 +1,70 @@
-<div class=" page-header header-all-page ">
+<div class="page-header header-all-page">
   <h2>Book your Room <small>A Click away to book</small></h2>
 </div>
-<div class = " col-md-12 col-sm-12 col-lg-12">
-	   <% if @book_room.errors.any? %>
-    <div class = "danger">
-      <h2>
-        <%= pluralize(@book_room.errors.count, "error") %>
-      </h2>
+
+<div class=" col-md-12 col-sm-12 col-lg-12">
+  <%if @book_room.errors.any? %>
+    <div class="danger">
+      <h2><%= pluralize(@book_room.errors.count, "error") %></h2>
       <ul>
-        <% @book_room.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+        <%@book_room.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li><%end %>
       </ul>
+    </div><%end %><%if flash[:success].present?%>
+    <div class="alert alert-success fade in fade_alerts">
+      <strong>Success!</strong> <%=flash[:success]%>.
     </div>
-    <% end %>
-		<%if flash[:success].present?%>
-			<div class="alert alert-success fade in fade_alerts">
-		    <strong>Success! </strong><%=flash[:success]%>.
-			</div>
-		<%end%>
+  <%end%>
 </div>
 
 <div class="container-fluid">
-<%= form_for @book_room do |f| %>
-  <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-4" >
-      <label for="fromtime" class="control-label">Select Meeting Room: </label>
+  <%= form_for @book_room do |f| %>
+    <div class="row row-padding">
+      <div class="col-md-3 col-sm-6 col-lg-3 col-xs-4">
+        <label class="control-label" for="fromtime">Select Meeting
+        Room:</label>
+      </div>
+      <div class="col-md-4 col-sm-8 col-lg-4 col-xs-10">
+        <%= f.select :meeting_room_id, options_for_select(@meeting_rooms_lists.collect { |room| [room.name.titleize, room.id] }, 1), {}, { id: 'rooms_select' ,:class => "form-control"} %>
+      </div>
     </div>
-    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
-      <%= f.select :meeting_room_id, options_for_select(@meeting_rooms_lists.collect { |room| [room.name.titleize, room.id] }, 1), {}, { id: 'rooms_select' ,:class => "form-control"} %>
+    <div class="row row-padding">
+      <div class="col-md-3 col-sm-6 col-lg-3 col-xs-8">
+        <label class="control-label" for="fromtime">From:</label>
+      </div>
+      <div class="col-md-4 col-sm-8 col-lg-4 col-xs-10">
+        <%= f.text_field :starts_at, :required => true, :id => 'datetimepicker_start', :class => "form-control"%>
+      </div>
     </div>
-  </div>
-
-  <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
-      <label for="fromtime" class="control-label">From: </label>
+    <div class="row row-padding">
+      <div class="col-md-3 col-sm-6 col-lg-3 col-xs-8">
+        <label class="control-label" for="fromtime">To:</label>
+      </div>
+      <div class="col-md-4 col-sm-8 col-lg-4 col-xs-10">
+        <%= f.text_field :ends_at, :required => true, :id => 'datetimepicker_end', :class => "form-control"%>
+      </div>
     </div>
-    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
-      <%= f.text_field :starts_at, :required => true, :id => 'datetimepicker_start', :class => "form-control"%>
+    <div class="row row-padding">
+      <div class="col-md-3 col-sm-6 col-lg-3 col-xs-8">
+        <label class="control-label" for="fromtime">Attendees:</label>
+      </div>
+      <div class="col-md-4 col-sm-8 col-lg-4 col-xs-10">
+        <%= f.select :invitees, options_for_select(@employees_list.collect { |user| [user.name.titleize, user.id] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
+      </div>
     </div>
-  </div>
-
-  <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
-      <label for="fromtime" class="control-label">To: </label>
+    <div class="row row-padding">
+      <div class="col-md-3 col-sm-6 col-lg-3 col-xs-8">
+        <label class="control-label" for="fromtime">Subject:</label>
+      </div>
+      <div class="col-md-4 col-sm-8 col-lg-4 col-xs-10">
+        <%= f.text_area :agenda, :class => "form-control", :rows => "3"%>
+      </div>
     </div>
-    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
-       <%= f.text_field :ends_at, :required => true, :id => 'datetimepicker_end', :class => "form-control"%>
+    <div class="row row-padding">
+      <div class="col-md-3 col-sm-6 col-lg-3 col-xs-8"></div>
+      <div class="col-md-4 col-sm-8 col-lg-4 col-xs-10">
+        <%=f.submit 'Book The Room', :id => "book_room", :class => ["btn", "btn-info"] , data: {disable_with: "Checking Availabilty.."}%>
+      </div>
     </div>
-  </div>
-
-  <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
-      <label for="fromtime" class="control-label">Attendees: </label>
-    </div>
-    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
-       <%= f.select :invitees, options_for_select(@employees_list.collect { |user|
-						[user.name.titleize, user.id] }, 1), {}, { multiple: true ,id: 'users_select' ,:class => "form-control"} %>
-    </div>
-  </div>
-
-  <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
-      <label for="fromtime" class="control-label">Subject: </label>
-    </div>
-    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
-       <%= f.text_area :agenda, :required => true, :class => "form-control", :rows => "3"%>
-    </div>
-  </div>
-
-    <div class = "row row-padding">
-    <div class = "col-md-3 col-sm-6 col-lg-3 col-xs-8" >
-    </div>
-    <div class = "col-md-4 col-sm-8 col-lg-4 col-xs-10" >
-       <%=f.submit 'Book The Room', :id => "book_room", :class => ["btn", "btn-info"] , data: {disable_with: "Checking Availabilty.."}%>
-    </div>
-  </div>
-
-<% end %>
+  <%end %>
 </div>
