@@ -63,7 +63,7 @@
         <%= f.text_field :ends_at, :required => true, :id => 'datetimepicker_end',:placeholder => "End's at", :class => "form-control mrg-top"%>
       </div>
       <div class="row-padding">
-        <%= f.text_area :agenda, :required => true, :placeholder => "Agenda", :class => "form-control mrg-top", :rows => "3"%>
+        <%= f.text_area :agenda, :required => true, :placeholder => "Agenda (Optional)", :class => "form-control mrg-top", :rows => "3"%>
       </div>
       <div class="row-padding mrg-btm">
         <%=f.submit 'Book The Room', :id => "book_room", :class => ["btn", "btn-danger", "mrg-top"] , data: {disable_with: "Checking Availabilty.."}%>
