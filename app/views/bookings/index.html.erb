@@ -1,70 +1,73 @@
-<div class=" page-header header-all-page ">
-  <h2>BookandGo <small>We make it easy..</small></h2>
-</div>
-    <div id="myCarousel" class="carousel slide" style="width: 800px; margin: 0 auto" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag("sample9.jpg") %>
-      <div class="carousel-caption">
-         <h2>BookandGo</h2>
-
-        <h4><p>Booking Meetings Rooms have Never Been This Easy Before.Online application to book meeting rooms.Book your meeting room in a single click..</p></h4>
-        <p>
-          <a class="btn btn-lg btn-primary" href="<%= new_booking_path%>" role="button"><span class = "glyphicon glyphicon-tags"></span> Click Here to Book...</a>
-        </p>
-      </div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="btn-group">
+      <%= link_to "All", bookings_path, :class => "btn btn-#{active_action('bookings/index')}" %>
+      <%= link_to "Today", todays_bookings_path, :class => "btn btn-#{active_action('bookings/todays')}" %>
+      <%= link_to "Upcoming", upcoming_bookings_path, :class => "btn btn-#{active_action('bookings/upcoming')}" %>
     </div>
-
-    <div class="item">
-     <%= image_tag("sample2.jpg") %>
-      <div class="carousel-caption">
-         <h2>BookandGo</h2>
-        <h4><p>Booking Meetings Rooms have Never Been This Easy Before.Online application to book meeting rooms.Book your meeting room in a single click..</p></h4>
-        <p>
-          <a class="btn btn-lg btn-primary" href="<%= new_booking_path%>" role="button"><span class = "glyphicon glyphicon-tags"></span> Click Here to Book...</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <%= image_tag("sample7.jpg") %>
-      <div class="carousel-caption">
-         <h2>BookandGo</h2>
-        <h4><p>Booking Meetings Rooms have Never Been This Easy Before.Online application to book meeting rooms.Book your meeting room in a single click..</p></h4>
-        <p>
-          <a class="btn btn-lg btn-primary" href="<%= new_booking_path%>" role="button"><span class = "glyphicon glyphicon-tags"></span> Click Here to Book...</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <%= image_tag("sample9.jpg") %>
-<div class="carousel-caption">
-         <h2>BookandGo</h2>
-
-        <h4><p>Booking Meetings Rooms have Never Been This Easy Before.Online application to book meeting rooms.Book your meeting room in a single click..</p></h4>
-        <p>
-          <a class="btn btn-lg btn-primary" href="<%= new_booking_path%>" role="button"><span class = "glyphicon glyphicon-tags"></span> Click Here to Book...</a>
-        </p>
-      </div>
   </div>
+</div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <%if @booked_room_list.present? %>
+      <table class="table table-bordered table-hover display" id=
+      "upcoming_table">
+        <thead>
+          <tr style="background-color: #EEE;">
+            <th>Meeting Room</th>
+            <th>Booked By</th>
+            <th>From</th>
+            <th>To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@booked_room_list.each do |room|%>
+          <tr class="<%= row_class(room) %>">
+            <td><%=room.meeting_room.name%></td>
+            <td><%=room.user.name%></td>
+            <td style="font-weight: bold">
+            <%=room.starts_at.strftime("%d/%m/%Y at %H:%M %p")%></td>
+            <td style="font-weight: bold">
+            <%=room.ends_at.strftime("%d/%m/%Y at %H:%M %p")%></td>
+          </tr><%end%>
+        </tbody>
+      </table><%else%>
+      <div class="border-width">
+        <div style="text-align: center">
+          <h2>No Bookings to display</h2>
+        </div>
+      </div><%end%>
+    </div>
+    <div class="col-md-4 foo book">
+      <h1><span class="glyphicon glyphicon-hand-right"></span> &nbsp;Book
+      your Room</h1>
+      <div>
+        <%if flash[:errors] %>
+        <div class="alert alert-danger fade in fade_alerts">
+          <strong></strong><%=flash[:errors]%>.
+        </div><%end %><%if flash[:success].present?%>
+        <div class="alert alert-success fade in fade_alerts">
+          <strong>Success!</strong> <%=flash[:success]%>.
+        </div><%end%>
+      </div><%= form_for @book_room do |f| %>
+      <div>
+        <%= f.select :meeting_room_id, options_for_select(@meeting_rooms_lists.collect { |room| [room.name.titleize, room.id] }, 1), {}, { id: 'rooms_select' ,:class => "form-control mrg-top"} %>
+      </div>
+      <div class="row-padding">
+        <%= f.text_field :starts_at, :required => true, :id => 'datetimepicker_start', :placeholder => "Start's at",:class => "form-control mrg-top"%>
+      </div>
+      <div class="row-padding">
+        <%= f.text_field :ends_at, :required => true, :id => 'datetimepicker_end',:placeholder => "End's at", :class => "form-control mrg-top"%>
+      </div>
+      <div class="row-padding">
+        <%= f.text_area :agenda, :required => true, :placeholder => "Agenda", :class => "form-control mrg-top", :rows => "3"%>
+      </div>
+      <div class="row-padding mrg-btm">
+        <%=f.submit 'Book The Room', :id => "book_room", :class => ["btn", "btn-danger", "mrg-top"] , data: {disable_with: "Checking Availabilty.."}%>
+      </div><%end %>
+    </div>
+  </div>
 </div>

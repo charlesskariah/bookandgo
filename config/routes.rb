@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'bookings#booked_list'
+  root 'bookings#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -26,9 +26,8 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-    resources :bookings, :only => [:new, :create] do
+    resources :bookings, :only => [:index, :new, :create] do
       collection do
-        get 'booked_list'
         get 'upcoming'
         get 'todays'
       end
